@@ -70,11 +70,15 @@ int main () {
 
     // Setup vertex data and configure vertex attributes
     float triangleVertices1[] = {
-        -0.5f, 0.0f, 0.0f, 1.0f, 0.8f, 0.9f,    // a
-        0.0f, 1.0f, -0.5f, 1.0f, 1.0f, 1.0f,    // b
-        0.5f, 0.0f, 0.0f, 1.0f, 1.0f, 0.0f,     // c
-        0.5f, 0.0f, -1.0f, 0.0f, 0.0f, 1.0f,    // d
-        -0.5f, 0.0f, -1.0f, 0.0f, 0.5f, 0.5f   // e
+        -0.5f, 0.0f, 0.0f, 1.0f, 0.8f, 0.9f,    // a - 0
+        0.0f, 1.0f, -0.5f, 1.0f, 1.0f, 1.0f,    // b - 1
+        0.5f, 0.0f, 0.0f, 1.0f, 1.0f, 0.0f,     // c - 2
+        0.5f, 0.0f, -1.0f, 0.0f, 0.0f, 1.0f,    // d - 3
+        -0.5f, 0.0f, -1.0f, 0.0f, 0.5f, 0.5f,   // e - 4
+        -0.5f, -1.0f, 0.0f, 0.1f, 0.0f, 0.0f,   // f - 5
+        0.5f, -1.0f, 0.0f, 0.1f, 0.0f, 0.0f,    // g - 6
+        0.5f, -1.0f, -1.0f, 0.1f, 0.0f, 0.0f,   // h - 7
+        -0.5f, -1.0f, -1.0f, 0.1f, 0.0f, 0.0f   // i - 8
     };
     unsigned int indices[] = {
         0, 1, 2,
@@ -82,7 +86,15 @@ int main () {
         3, 1, 4,
         4, 1, 0,
         0, 2, 3,
-        0, 4, 3
+        0, 4, 3,
+        0, 5, 2,
+        2, 6, 5,
+        2, 6, 3,
+        3, 7, 6,
+        3, 7, 4,
+        4, 8, 7,
+        4, 8, 0,
+        0, 5, 8
     };
     /*
     A = -0.5f, 0.0f, 0.0f, 1.0f, 0.8f, 0.9f,
@@ -156,7 +168,7 @@ int main () {
         glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
         glBindVertexArray(VAO);
         // glDrawArrays(GL_TRIANGLES, 0, 12);
-        glDrawElements(GL_TRIANGLES, 18, GL_UNSIGNED_INT, 0);
+        glDrawElements(GL_TRIANGLES, 45, GL_UNSIGNED_INT, 0);
         glfwPollEvents();    
         glfwSwapBuffers(window);
     }
